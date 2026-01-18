@@ -1,0 +1,404 @@
+/* Стили для игры "Угадай реактив" */
+.game-container {
+    padding: 2rem 0;
+    max-width: 1200px;
+}
+
+.game-title {
+    font-family: 'Pangolin', cursive;
+    color: var(--accent2);
+    margin: 0;
+    font-size: 2rem;
+}
+
+.game-stats {
+    display: flex;
+    gap: 1.5rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* Информационные карточки */
+.game-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: white;
+    border-radius: var(--round);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 4px solid var(--accent);
+}
+
+.info-card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.info-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.timer {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent2);
+    font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    transition: color 0.3s ease;
+}
+
+.high-score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Игровая область */
+.game-area {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: var(--round);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* Описание реактива */
+.reagent-description {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--round);
+    box-shadow: var(--shadow);
+}
+
+.reagent-description h3 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.description-text {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.7;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Варианты ответов */
+.answer-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.answer-option {
+    background: white;
+    border: 3px solid var(--secondary);
+    border-radius: var(--round);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.answer-option:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.answer-option:active {
+    transform: translateY(-2px);
+}
+
+.option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.option-formula {
+    font-size: 1.1rem;
+    color: var(--accent2);
+    font-family: 'Times New Roman', serif;
+}
+
+/* Подсказки */
+.hints-section {
+    margin-bottom: 2rem;
+}
+
+.hint-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.hint-btn {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+}
+
+.hint-btn:hover {
+    background: linear-gradient(135deg, #44a08d, #398d7b);
+}
+
+.hints-display {
+    min-height: 60px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--round);
+    border: 2px dashed var(--primary);
+}
+
+.hint-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hint-item i {
+    color: #ffd166;
+    font-size: 1.2rem;
+}
+
+.hint-cost {
+    margin-left: auto;
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+/* Управление */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Инструкция */
+.instructions {
+    background: white;
+    border-radius: var(--round);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.instructions h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.instructions ol {
+    padding-left: 1.5rem;
+    color: #666;
+}
+
+.instructions li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    border-radius: var(--round);
+    width: 90%;
+    max-width: 600px;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: var(--round) var(--round) 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--dark);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--dark);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+.result-icon {
+    font-size: 4rem;
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+}
+
+.result-icon.success i {
+    color: #4CAF50;
+}
+
+.result-icon.fail i {
+    color: #f44336;
+}
+
+#resultMessage {
+    font-size: 1.2rem;
+    color: var(--dark);
+    margin-bottom: 2rem;
+}
+
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent2);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .game-stats {
+        display: none;
+    }
+    
+    .game-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .answer-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .hint-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hint-controls .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .game-controls .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .result-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 1.5rem;
+    }
+    
+    .timer {
+        font-size: 2rem;
+    }
+    
+    .description-text {
+        font-size: 1rem;
+    }
+    
+    .option-name {
+        font-size: 1.1rem;
+    }
+    
+    .option-formula {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Собери молекулу | BioChem Lab</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="molecule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Pangolin&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html#games" class="logo">
+                <i class="fas fa-arrow-left"></i> Назад к играм
+            </a>
+            <h1 class="game-title">Собери молекулу</h1>
+            <div class="game-stats">
+                <span id="scoreDisplay">Очки: 0</span>
+                <span id="levelDisplay">Уровень: 1</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент игры -->
+    <main class="game-container container">
+        <div class="game-info">
+            <div class="info-card">
+                <h3><i class="fas fa-bullseye"></i> Цель</h3>
+                <p>Собери молекулу из атомов. Формула скрыта - используй подсказки!</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-clock"></i> Время</h3>
+                <div class="timer" id="timer">01:30</div>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-trophy"></i> Рекорд</h3>
+                <div class="high-score" id="highScore">0</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <!-- Целевая молекула -->
+            <div class="target-molecule">
+                <h3>Собери молекулу:</h3>
+                <div class="molecule-display" id="targetDisplay">
+                    <div class="formula">???</div>
+                    <div class="name">Вода</div>
+                </div>
+            </div>
+
+            <!-- Рабочая область -->
+            <div class="workspace">
+                <div class="atom-palette" id="atomPalette">
+                    <!-- Атомы загружаются через JS -->
+                </div>
+                
+                <div class="construction-area" id="constructionArea">
+                    <div class="drop-zone">
+                        <i class="fas fa-plus-circle"></i>
+                        <p>Перетащи атомы сюда</p>
+                    </div>
+                    <div class="connections" id="connections"></div>
+                </div>
+            </div>
+
+            <!-- Управление -->
+            <div class="game-controls">
+                <button id="checkBtn" class="btn">
+                    <i class="fas fa-check"></i> Проверить
+                </button>
+                <button id="clearBtn" class="btn btn-secondary">
+                    <i class="fas fa-trash"></i> Очистить
+                </button>
+                <button id="hintBtn" class="btn btn-hint">
+                    <i class="fas fa-lightbulb"></i> Подсказка
+                </button>
+                <button id="nextBtn" class="btn btn-next disabled">
+                    <i class="fas fa-lock"></i> Завершите уровень
+                </button>
+            </div>
+        </div>
+
+        <!-- Инструкция -->
+        <div class="instructions">
+            <h3><i class="fas fa-graduation-cap"></i> Как играть:</h3>
+            <ol>
+                <li>Посмотри подсказки о молекуле, которую нужно собрать</li>
+                <li>Перетащи нужные атомы из палитры в рабочую область</li>
+                <li>Соедини атомы, создавая химические связи</li>
+                <li>Нажми "Проверить", чтобы проверить свою молекулу</li>
+                <li>Формула откроется только после правильной сборки!</li>
+            </ol>
+        </div>
+    </main>
+
+    <!-- Модальное окно результата -->
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="resultTitle">Результат</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="result-icon" id="resultIcon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <p id="resultMessage">Ты собрал молекулу правильно!</p>
+                <div class="result-stats">
+                    <div class="stat">
+                        <span class="stat-label">Очки:</span>
+                        <span class="stat-value" id="resultScore">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Время:</span>
+                        <span class="stat-value" id="resultTime">0s</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Уровень:</span>
+                        <span class="stat-value" id="resultLevel">1</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="playAgainBtn" class="btn">
+                        <i class="fas fa-redo"></i> Играть еще
+                    </button>
+                    <button id="backToMenuBtn" class="btn btn-secondary">
+                        <i class="fas fa-home"></i> В меню
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="molecule.js"></script>
+</body>
+</html>
